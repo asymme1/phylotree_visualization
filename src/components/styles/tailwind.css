@@ -1,0 +1,49 @@
+.rounded-lg {
+    border-radius: 0.5rem
+}
+
+.border-2 {
+    border-width: 2px
+}
+
+.border-pink-600 {
+    --tw-border-opacity: 1;
+    border-color: rgb(219 39 119 / var(--tw-border-opacity))
+}
+
+.bg-pink-600 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(219 39 119 / var(--tw-bg-opacity))
+}
+
+.px-8 {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem
+}
+
+.py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem
+}
+
+.text-white {
+    --tw-text-opacity: 1;
+    color: rgb(255 255 255 / var(--tw-text-opacity))
+}
+
+.disabled\:border-pink-300:disabled {
+    --tw-border-opacity: 1;
+    border-color: rgb(249 168 212 / var(--tw-border-opacity))
+}
+
+.disabled\:bg-pink-300:disabled {
+    --tw-bg-opacity: 1;
+    background-color: rgb(249 168 212 / var(--tw-bg-opacity))
+}
+
+/* @media (min-width: 1024px) {
+    .lg\:px-16 {
+        padding-left: 4rem;
+        padding-right: 4rem
+    }
+} */

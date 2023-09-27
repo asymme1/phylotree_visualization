@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useState, useEffect } from "react";
 
 import "./styles/PhylotreeVisualization.css";
+import "./styles/tailwind.css";
 
-import Button from "react-bootstrap/Button";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
-import "bootstrap/dist/css/bootstrap.min.css";
+// import Button from "react-bootstrap/Button";
+// import ButtonGroup from "react-bootstrap/ButtonGroup";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 import PhylogeneticTree from "./PhylogeneticTree";
 
@@ -29,17 +30,19 @@ import {
 import displayTaxaNameButtonImage from "./styles/display_taxa_name_button.png";
 import displayBranchLengthButtonImage from "./styles/display_branch_length_button.png";
 
+const buttonClasses = 'py-1 px-1 border-2 text-white bg-pink-600 border-pink-600 disabled:border-pink-300 disabled:bg-pink-300 rounded-lg';
+
 function Reload(props: any) {
   return (
-    <Button title="Reload tree" variant="secondary" {...props}>
+    <button className={buttonClasses} title="Reload tree" variant="secondary" {...props}>
       <FontAwesomeIcon key={1} icon={faRedo} />
-    </Button>
+    </button>
   );
 }
 
 function HorizontalExpansionButton(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       variant="secondary"
       style={{ fontSize: 10 }}
       title="Expand horizontally"
@@ -47,13 +50,13 @@ function HorizontalExpansionButton(props: any) {
     >
       <FontAwesomeIcon key={1} icon={faArrowLeft} />
       <FontAwesomeIcon key={2} icon={faArrowRight} />
-    </Button>
+    </button>
   );
 }
 
 function HorizontalCompressionButton(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       variant="secondary"
       style={{ fontSize: 10 }}
       title="Compress horizontally"
@@ -61,107 +64,107 @@ function HorizontalCompressionButton(props: any) {
     >
       <FontAwesomeIcon key={1} icon={faArrowRight} />
       <FontAwesomeIcon key={2} icon={faArrowLeft} />
-    </Button>
+    </button>
   );
 }
 
 function VerticalExpansionButton(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       variant="secondary"
-      style={{ fontSize: 10, display: "flex", flexDirection: "column" }}
+      style={{ fontSize: 10 }}
       title="Expand vertically"
       {...props}
     >
       <FontAwesomeIcon key={1} icon={faArrowUp} />
       <FontAwesomeIcon key={2} icon={faArrowDown} />
-    </Button>
+    </button>
   );
 }
 
 function VerticalCompressionButton(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       variant="secondary"
-      style={{ fontSize: 10, display: "flex", flexDirection: "column" }}
+      style={{ fontSize: 10 }}
       title="Compress vertically"
       {...props}
     >
       <FontAwesomeIcon key={1} icon={faArrowDown} />
       <FontAwesomeIcon key={2} icon={faArrowUp} />
-    </Button>
+    </button>
   );
 }
 
 function AscendingSortButton(props: any) {
   return (
-    <Button variant="secondary" title="Sort in ascending order" {...props}>
+    <button className={buttonClasses} variant="secondary" title="Sort in ascending order" {...props}>
       <FontAwesomeIcon key={1} icon={faSortAmountUp} flip="vertical" />
-    </Button>
+    </button>
   );
 }
 
 function DescendingSortButton(props: any) {
   return (
-    <Button variant="secondary" title="Sort in descending order" {...props}>
+    <button className={buttonClasses} variant="secondary" title="Sort in descending order" {...props}>
       <FontAwesomeIcon key={1} icon={faSortAmountUp} />
-    </Button>
+    </button>
   );
 }
 
 function AlignTipsRightButton(props: any) {
   return (
-    <Button variant="secondary" title="Align tips to right" {...props}>
+    <button className={buttonClasses} variant="secondary" title="Align tips to right" {...props}>
       <FontAwesomeIcon key={1} icon={faAlignRight} />
-    </Button>
+    </button>
   );
 }
 
 function AlignTipsLeftButton(props: any) {
   return (
-    <Button variant="secondary" title="Align tips to left" {...props}>
+    <button className={buttonClasses} variant="secondary" title="Align tips to left" {...props}>
       <FontAwesomeIcon key={1} icon={faAlignLeft} />
-    </Button>
+    </button>
   );
 }
 
 function ToggleDisplayTaxaName(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       title="Toggle the display of taxa names"
       variant="secondary"
       {...props}
     >
       <img src={displayTaxaNameButtonImage} width="20" />
-    </Button>
+    </button>
   );
 }
 
 function ToggleDisplayBranchLength(props: any) {
   return (
-    <Button
+    <button className={buttonClasses}
       title="Toggle the display of branch lengths"
       variant="secondary"
       {...props}
     >
       <img src={displayBranchLengthButtonImage} width="20" />
-    </Button>
+    </button>
   );
 }
 
 function SaveNewickButton(props: any) {
   return (
-    <Button title="Export to Newick" variant="secondary" {...props}>
+    <button className={buttonClasses} title="Export to Newick" variant="secondary" {...props}>
       <FontAwesomeIcon key={1} icon={faFileExport} flip="vertical" />
-    </Button>
+    </button>
   );
 }
 
 function DownloadImageButton(props: any) {
   return (
-    <Button title="Save image" variant="secondary" {...props}>
+    <button className={buttonClasses} title="Save image" variant="secondary" {...props}>
       <FontAwesomeIcon key={1} icon={faImage} flip="vertical" />
-    </Button>
+    </button>
   );
 }
 
@@ -432,7 +435,7 @@ export const PhylotreeVisualization: FunctionComponent<
     <div className="pv-container">
       <div className="tool-group">
         <div className="tool-group-upper">
-          <ButtonGroup style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
             <Reload onClick={() => setBaseStates()} />
             <HorizontalExpansionButton
               onClick={() => setWidth(Math.max(width + widthPerNode, minWidth))}
@@ -466,7 +469,7 @@ export const PhylotreeVisualization: FunctionComponent<
             />
             <SaveNewickButton onClick={() => handleExportNewick()} />
             <DownloadImageButton onClick={() => handleDownloadImage()} />
-          </ButtonGroup>
+          </div>
 
           <ShowInternalLabel
             isShowInternalNode={isShowInternalNode}
